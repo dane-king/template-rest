@@ -28,17 +28,32 @@ $(document).ready(function() {
     item_template = Handlebars.compile($("#item-template").html());
     query_template = Handlebars.compile($("#query-template").html());
     template_template = Handlebars.compile($("#template-template").html());
-	httpRequest(url);
+    httpRequest('GET',url);
  
 });
+var putForm=function(e){
+    var form=e.currentTarget.closest('form');
+    var arrayData=$(form).serializeArray()
+    var formData={"template":{"data":arrayData}}
+    httpRequest('PUT',form.action,formData);
 
-var httpRequest=function(url, method){
-	  $.ajax({
+};
+var postForm=function(e){
+    var form=e.currentTarget.closest('form');
+    var arrayData=$(form).serializeArray()
+    var formData={"template":{"data":arrayData}}
+    httpRequest('POST',form.action,formData);
+
+};
+var httpRequest=function(method, url, form){
+      $.ajax({
         url: url,
+        data:JSON.stringify(form),
+        contentType: "application/vnd.collection+json",
         type:method || "GET",
         headers: { 
-        	Accept : "application/vnd.collection+json"
-    	}
+            Accept : "application/vnd.collection+json",
+        }
      })
     .then(function(data) {
         $("#links").html(data.collection.links.map(link_template));
@@ -46,6 +61,14 @@ var httpRequest=function(url, method){
         $("#queries").html(data.collection.queries.map(query_template));
         $("#templates").html(template_template(data.collection.template));
         $("#items form").hide();
+        $("#items button[type='submit']").bind('click',function(e){
+            e.preventDefault();
+            putForm(e);
+        });
+        $("#template button[type='submit']").bind('click',function(e){
+            e.preventDefault();
+            postForm(e);
+        });
         $("a").bind('click',function(e){
             e.preventDefault();
             bindLinks(e);
@@ -69,11 +92,11 @@ var bindLinks=function(e){
             return;
         };        
         if(el.className==='delete'){
-            $(el).on('click',httpRequest(el.href,'DELETE'));
+            $(el).on('click',httpRequest('DELETE',el.href));
             return;
         };        
     };
-    httpRequest(el.href);
+    httpRequest("GET", el.href);
 
 }
 
