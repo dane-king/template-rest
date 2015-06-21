@@ -13,11 +13,13 @@ label{
 	text-transform: capitalize;
 	display: inline;
 	width:4em;
-	text-align: right;
 	margin-right: 0.5em;
 	font-weight: 700;
 	font-size: 1.25em;
 
+}
+h3{
+	text-align: center;
 }
 input
 {
@@ -29,11 +31,19 @@ input
 ol, ul { 
 	list-style: none; 
 }
+li span:first-child{
+	text-transform: capitalize;
+	font-weight: bold;
+	font-size: 110%;
+}
 
 #items span{
 	margin:0.5em;
 	text-align: left;
 	font-size:1.25em;
+}
+#items button{
+	margin-top:1em;
 }
 .item{
 	border: 0.05em solid;
@@ -42,18 +52,22 @@ ol, ul {
 
 .left-margin{
 	float:left;
-	width:40%;
+	padding-right: .1em;
+	width:39%;
+	
+}
+.left-margin div{
+	border: .05em solid;
 }
 .right-margin{
 	float:right;
-	width:60%;
+	padding-right: .1em;
+	width:59%;
 }
 .right-margin div{
 	text-align: center;
 }
-.main{
-	border: .15em solid;
-}
+
 .right-margin a{
 	margin: auto;
 }
@@ -66,6 +80,7 @@ ol, ul {
     -webkit-border-radius: .3em;
     -moz-border-radius: .3em;
     border-radius: .3em;
+    text-decoration: none;
 }
 button[type="submit"]{
 	margin-top: .3em;

@@ -8,33 +8,33 @@
 </head>
 <body>
 	<div class="left-margin">
-		<div class="main" id="links">Link Section</div>
-		<div class="main" id="queries">Query Display</div>
-		<div class="main" id="templates">Template Display</div>		
+		<div id="links">Link Section</div>
+		<div id="queries">Query Display</div>
+		<div id="templates">Template Display</div>		
 	</div>
 	<div class="right-margin">
-		<div class="main" id="items">Items Display</div>
+		<div id="items">Items Display</div>
 	</div>
 
 
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.js"></script>
 	<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
-	<script src="client.js"></script>
+	<script src="/js/client.js"></script>
 	
 
-	<script id="link-template" type="text/x-handlebars-template">
+	<script id="link-tpl" type="text/x-handlebars-template">
 		<ul>
 			<li class="button">{{>link}}</li>
 		</ul>			
 	</script>
-	<script id="query-template" type="text/x-handlebars-template">
+	<script id="query-tpl" type="text/x-handlebars-template">
 		<ul>
 			<li class="button">{{>link}}</li>
 		</ul>
 	</script>
 
-	<script id="item-template" type="text/x-handlebars-template">
+	<script id="item-tpl" type="text/x-handlebars-template">
 	   <div class="{{rel}}" id="{{find_id ./data}}">	
 		   <a class="display" href="{{href}}"><button type="button">Display</button></a>
 		   <a class="edit" href="{{href}}"><button type="button">Edit</button></a>
@@ -43,7 +43,6 @@
 				{{#each data}}
 					{{>input}}
 				{{/each}}
-				<a class="cancel_edit" href="#">Cancel</a>
 				<button type="submit">Update</button>
 			</form>
 			<ul>
@@ -56,14 +55,14 @@
 		</div>
 	</script>
 
-	<script id="template-template" type="text/x-handlebars-template">
+	<script id="template-tpl" type="text/x-handlebars-template">
 		<div class="{{rel}}" id="template">
 			<h3>{{prompt}}</h3>	
 			<form action="{{href}}" method="POST">
-					{{#each data}}
-						{{>input}}
-					{{/each}}
-					<button type="submit">Submit</button>
+				{{#each data}}
+					{{>input}}
+				{{/each}}
+				<button type="submit">Submit</button>
 			</form>
 		</div>
 	</script>
