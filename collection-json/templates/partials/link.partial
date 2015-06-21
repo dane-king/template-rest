@@ -1,0 +1,1 @@
+<a class="{{rel}}" href="{{href}}{{>query_param}}">{{prompt}}</a>
