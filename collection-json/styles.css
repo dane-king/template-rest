@@ -7,7 +7,7 @@ form{
 	width: 85%;
 	border: .1em solid;
 	padding:0.5em;
-	margin: 1em;
+	margin: 0.5em;
 }
 label{
 	text-transform: capitalize;
@@ -61,32 +61,8 @@ ol, ul {
 	text-align: left;
 }
 
-/*link styles*/
-a.cancel_edit, li.button a{
-	text-decoration: none;
-}
 
-a.cancel_edit{
-    float:right;
-    margin-top:-144px;
-    margin-right:-4px;
-    cursor:pointer;
-    color: #fff;
-    border: 1px solid #AEAEAE;
-    border-radius: 30px;
-    background: #605F61;
-    font-size: 31px;
-    font-weight: bold;
-    display: inline-block;
-    line-height: 0px;
-    padding: 11px 3px; 
-    
-}
-
-.cancel_edit:before {
-    content: "×";
-}
-button a, button[type="submit"]{
+.button a, button[type="submit"]{
     -webkit-border-radius: .3em;
     -moz-border-radius: .3em;
     border-radius: .3em;
@@ -95,12 +71,14 @@ button[type="submit"]{
 	margin-top: .3em;
 	border: solid .1em #5C5C5C;	
 }
+
 .button a{
     border: solid .1em #20538D;	
     padding: .3em .3em;
     background: #4479BA;
     color: #FFF;
 }
+
 .button a:hover, button[type="submit"]:hover {
     background: #356094;
     border: solid .1em #2A4E77;
