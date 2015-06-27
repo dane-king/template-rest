@@ -1,0 +1,104 @@
+body{
+	font-family: font-family: ‘Lucida Console’, Monaco, monospace;
+}
+form{
+    background: -webkit-linear-gradient(bottom, #CCCCCC, #EEEEEE 175px);
+    background: -o-linear-gradient(bottom, #CCCCCC, #EEEEEE 175px);
+	width: 85%;
+	border: .1em solid;
+	padding:0.5em;
+	margin: 0.5em;
+}
+label{
+	text-transform: capitalize;
+	display: inline;
+	width:4em;
+	margin-right: 0.5em;
+	font-weight: 700;
+	font-size: 1.25em;
+
+}
+h3{
+	text-align: center;
+}
+input
+{
+	display: block;
+	font-size: 1em;
+	width:75%;
+}
+
+ol, ul { 
+	list-style: none; 
+}
+li span:first-child{
+	text-transform: capitalize;
+	font-weight: bold;
+	font-size: 110%;
+}
+
+#items span{
+	margin:0.5em;
+	text-align: left;
+	font-size:1.25em;
+}
+#items button{
+	margin-top:1em;
+}
+.item{
+	border: 0.05em solid;
+}
+
+
+.left-margin{
+	float:left;
+	padding-right: .1em;
+	width:39%;
+	
+}
+.left-margin div{
+	border: .05em solid;
+}
+.right-margin{
+	float:right;
+	padding-right: .1em;
+	width:59%;
+}
+.right-margin div{
+	text-align: center;
+}
+
+.right-margin a{
+	margin: auto;
+}
+.right-margin ul{
+	text-align: left;
+}
+
+
+.button a, button[type="submit"]{
+    -webkit-border-radius: .3em;
+    -moz-border-radius: .3em;
+    border-radius: .3em;
+    text-decoration: none;
+}
+button[type="submit"]{
+	margin-top: .3em;
+	border: solid .1em #5C5C5C;	
+}
+
+.button a{
+    border: solid .1em #20538D;	
+    padding: .3em .3em;
+    background: #4479BA;
+    color: #FFF;
+}
+
+.button a:hover, button[type="submit"]:hover {
+    background: #356094;
+    border: solid .1em #2A4E77;
+}
+.button a:active {
+    background: #5C5C5C;
+    border: solid .1em #203E5F;
+}
