@@ -1,0 +1,100 @@
+#%RAML 0.8
+ 
+title: World Music API
+baseUri: http://example.api.com/{version}
+version: v1
+schemas:
+  - halLink: |
+      { "$schema": "http://json-schema.org/schema",
+        "type": "object",
+        "description": "a Hypertext Application Language link",
+        "properties": {
+          "name":  { "type": "string" },
+          "href":  { "type": "string" },
+          "tempated": { "type": "boolean" }
+        },
+        "required": [ "href" ]
+      }
+  - songLinks: |
+      { "$schema": "http://json-schema.org/schema",
+        "type": "object",
+        "description": "possible hypermedia links for a song",
+        "properties": {
+          "self":  { "$ref": "halLink" },
+          "artist": { "$ref": "halLink" }
+        },
+        "required": [ "self", "artist" ]
+      }
+  - song: |
+      { "$schema": "http://json-schema.org/schema",
+        "type": "object",
+        "description": "a HAL song representation",
+        "properties": {
+          "title":  { "type": "string" },
+          "album":  { "type": "string" },
+          "_links": { "$ref": "songLinks"}
+        }
+      }
+  - songPageLinks: |
+      { "$schema": "http://json-schema.org/schema",
+        "type": "object",
+        "description": "possible hypermedia links for a song page",
+        "properties": {
+          "self":  { "$ref": "halLink" },
+          "next": { "$ref": "halLink" }
+        },
+        "required": [ "self" ]
+      }
+  - songPage: |
+      { "$schema": "http://json-schema.org/schema",
+        "type": "object",
+        "description": "a HAL song page representation",
+        "properties": {
+          "count":  { "type": "integer" },
+          "songs":  { "type": "array", "items": {"$ref": "song"}},
+          "_links": { "$ref": "songPageLinks"}
+        }
+      }
+  - serviceDocument: |
+      { "$schema": "http://json-schema.org/schema",
+        "type": "object",
+        "description": "the music API service document",
+        "properties": {
+         "songs": { "$ref": "halLink"}
+        }
+      }      
+
+/:
+  description: The API service document
+  get:
+    responses:
+      200:
+        body:
+          application/hal+json:
+            schema: serviceDocument
+    
+/songs:
+  description: |
+    Why are we documenting this? Because this is a Documentation! 
+    It's at least useful from service view to know the URI strucutre / queryParameters etc. it
+    presented to the clients (in the links) because resource URIs might be re-requested 
+    and must not change anyway. 
+    Tell you clients to walk the service document instead of using this information directly.
+    If you are lucky, they even might do that.
+  get:
+    description: 
+    queryParameters:
+      genre:
+        description: filter the songs by genre
+    responses:
+      200:
+        body:
+          application/hal+json:
+            schema: songPage
+  /{songId}:
+    get:
+      responses:
+        200:
+          body:
+            application/hal+json:
+              schema: song

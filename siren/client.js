@@ -1,4 +1,4 @@
-var url="http://cj-client.herokuapp.com/";
+var url="http://localhost:3000/";
 
 var formUtil=(function(){
     function getFormData(form){
